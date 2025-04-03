@@ -1,11 +1,10 @@
-from abc import ABC, abstractmethod
 from typing import List
-from handlers import Handler
-from filters import Filter
+from handlers import LogHandler
+from filters import LogFilter
 
 
 class Logger:
-    def __init__(self, handlers: List[Handler], filters: List[Filter]) -> None:
+    def __init__(self, handlers: List[LogHandler], filters: List[LogFilter]) -> None:
         self.handlers = handlers
         self.filters = filters
 
