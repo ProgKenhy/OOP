@@ -1,6 +1,6 @@
 import syslog
 from abc import ABC, abstractmethod
-from socket import socket
+import socket
 from typing import Optional
 
 
@@ -23,7 +23,7 @@ class SocketHandler(LogHandler):
     def __init__(self, host: str, port: int) -> None:
         self.host = host
         self.port = port
-        self._socket: Optional[socket]
+        self._socket: Optional[socket.socket] = None
 
     def connect(self) -> None:
         """Устанавливает соединение с сокетом"""
