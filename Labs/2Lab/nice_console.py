@@ -125,7 +125,7 @@ class Printer:
 
         print(f"\033[{y + cls.font_height + 1};0H")  # Переводим курсор
 
-    def __init__(self, color: Color, position: Tuple[int, int], symbol: str):
+    def __init__(self, color: Color, position: Tuple[int, int], symbol: str = '*'):
         self.color = color
         self.position = position
         self.symbol = symbol

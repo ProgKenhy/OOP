@@ -1,4 +1,4 @@
-from typing import ClassVar
+from typing import ClassVar, Self
 
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -15,8 +15,8 @@ class Vector2d:
     __slots__ = ("__x", "__y")
 
     def __init__(self, x: int, y: int):
-        self.__x = x
-        self.__y = y
+        self.x = x
+        self.y = y
 
     # region Свойства x и y с валидацией типа
     @property
@@ -43,7 +43,7 @@ class Vector2d:
 
     # region Альтернативные конструкторы
     @classmethod
-    def from_points(cls, start: 'Point2d', end: 'Point2d') -> 'Vector2d':
+    def from_points(cls, start: Point2d, end: Point2d) -> Self:
         return cls(end.x - start.x, end.y - start.y)
 
     # endregion
