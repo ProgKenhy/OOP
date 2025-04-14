@@ -1,6 +1,6 @@
+import socket
 import syslog
 from abc import ABC, abstractmethod
-import socket
 from typing import Optional
 
 
@@ -18,6 +18,7 @@ class FileHandler(LogHandler):
     def handle(self, message: str) -> None:
         with open(self.filename, self.mode, encoding='utf-8') as f:
             f.write(f"{message}\n")
+
 
 class SocketHandler(LogHandler):
     def __init__(self, host: str, port: int) -> None:
@@ -45,9 +46,11 @@ class SocketHandler(LogHandler):
         if self._socket:
             self._socket.close()
 
+
 class ConsoleHandler(LogHandler):
     def handle(self, message: str) -> None:
         print(f"[LOG] {message}")
+
 
 class SyslogHandler(LogHandler):
     def __init__(self, facility: int = syslog.LOG_USER) -> None:
@@ -56,4 +59,3 @@ class SyslogHandler(LogHandler):
     def handle(self, message: str) -> None:
         """Записывает сообщение в системный лог"""
         syslog.syslog(message)
-

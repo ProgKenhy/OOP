@@ -1,6 +1,7 @@
 import re
 from abc import ABC, abstractmethod
 
+
 class LogFilter(ABC):
     @abstractmethod
     def match(self, text: str) -> bool:
