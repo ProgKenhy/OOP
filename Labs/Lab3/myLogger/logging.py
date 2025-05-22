@@ -1,6 +1,6 @@
 from typing import List
-from handlers import LogHandler
-from filters import LogFilter
+from .handlers import LogHandler
+from .filters import LogFilter
 
 
 class Logger:
