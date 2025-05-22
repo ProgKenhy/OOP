@@ -9,6 +9,6 @@ class Logger:
         self.filters = filters
 
     def write(self, message: str) -> None:
-        if all(filter_ptn for filter_ptn in self.filters):
+        if all(filter_ptn.match(message) for filter_ptn in self.filters):
             for handler in self.handlers:
                 handler.handle(message)
